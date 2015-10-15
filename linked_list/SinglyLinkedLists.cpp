@@ -13,6 +13,22 @@ public:
     int getValue() const { return data; }
     void setNext( SinglyLinkedList *elem ) { next = elem; }
     void setValue( int value ) { data = value; }
+    
+    SinglyLinkedList* find(int value)
+    {
+    	SinglyLinkedList *currentElement = this;
+    	while(currentElement)
+    	{
+    		if(currentElement->getValue() == value)
+    			break;
+
+    		currentElement = currentElement->getNext();
+
+    	}
+
+    	return currentElement;
+    }
+
 	static bool insertInFront(SinglyLinkedList **head , int value)
     {
     	SinglyLinkedList *newElement = new SinglyLinkedList(value);//
@@ -62,9 +78,9 @@ int main()
 	cout << "value list 2:  " << list1->getNext()->getValue() <<endl ;
 	cout << "value list 3:  " << list1->getNext()->getNext()->getValue() <<endl;
 	cout << "value list 4:  " << list1->getNext()->getNext()->getNext()->getValue() <<endl;
+	cout << "==============" << endl;
 
-
-
-	
+	SinglyLinkedList *foundElement = list1->find(50);
+	cout << "found element , value is: "<<foundElement->getValue() <<endl;
 
 }
