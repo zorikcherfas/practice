@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <iostream>
-
 using namespace std;
+
 class SinglyLinkedList
 {
 
@@ -9,11 +9,16 @@ public:
     SinglyLinkedList( int value ): next( NULL ), data( value ) {}
     ~SinglyLinkedList() {};
 
+    /* Getting the next element */
     SinglyLinkedList *getNext() const { return next; }
+    /* Getting the value */
     int getValue() const { return data; }
+    /* Setting the next element */
     void setNext( SinglyLinkedList *elem ) { next = elem; }
+    /* Setting the value */
     void setValue( int value ) { data = value; }
     
+    /* Finding the element by value */
     SinglyLinkedList* find(int value)
     {
     	SinglyLinkedList *currentElement = this;
@@ -23,15 +28,15 @@ public:
     			break;
 
     		currentElement = currentElement->getNext();
-
     	}
-
     	return currentElement;
     }
-
+    /* Insert the value to the front of the list (head)
+    *  return - false on failure
+    */
 	static bool insertInFront(SinglyLinkedList **head , int value)
     {
-    	SinglyLinkedList *newElement = new SinglyLinkedList(value);//
+    	SinglyLinkedList *newElement = new SinglyLinkedList(value);
 
     	if(NULL == newElement)
     		return false;
