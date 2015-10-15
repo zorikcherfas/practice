@@ -13,7 +13,19 @@ public:
     int getValue() const { return data; }
     void setNext( SinglyLinkedList *elem ) { next = elem; }
     void setValue( int value ) { data = value; }
+	static bool insertInFront(SinglyLinkedList **head , int value)
+    {
+    	SinglyLinkedList *newElement = new SinglyLinkedList(value);//
 
+    	if(NULL == newElement)
+    		return false;
+
+    	newElement->data = value;
+    	newElement->next = *head;
+    	*head = newElement;
+    	
+    	return true;
+    }
   private:
     SinglyLinkedList *next;
     int         data;
@@ -40,4 +52,19 @@ int main()
 	cout << "value list 1:  " << list1->getValue() <<endl ;
 	cout << "value list 2:  " << list1->getNext()->getValue() <<endl ;
 	cout << "value list 3:  " << list1->getNext()->getNext()->getValue() <<endl;
+	cout << "==============" << endl;
+
+	cout <<"Adding value in front of the list" <<endl;
+	SinglyLinkedList::insertInFront(&list1 , 55);
+
+
+	cout << "value list 1:  " << list1->getValue() <<endl ;
+	cout << "value list 2:  " << list1->getNext()->getValue() <<endl ;
+	cout << "value list 3:  " << list1->getNext()->getNext()->getValue() <<endl;
+	cout << "value list 4:  " << list1->getNext()->getNext()->getNext()->getValue() <<endl;
+
+
+
+	
+
 }
